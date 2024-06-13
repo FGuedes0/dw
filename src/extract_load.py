@@ -4,6 +4,8 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 commodities = ["CL=F", "GC=F", "SI=F"]
 
 DB_HOST = os.getenv("DB_HOST_PROD")
@@ -35,4 +37,4 @@ def salvar_no_postgres(df, schema="public"):
 
 if __name__ == "__main__":
     dados_concatenados = buscar_todos_dados_commodities(commodities)
-    print(dados_concatenados)
+    salvar_no_postgres(dados_concatenados, schema="public")
