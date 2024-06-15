@@ -38,9 +38,9 @@ joined as (
     on
         c.data = m.data
         and c.simbolo = m.simbolo
-),
+)
 
-last_day as (
+/* last_day as (
     select
         max(data) as max_date
     from
@@ -54,9 +54,9 @@ filtered as (
         joined
     where
         data = (select max_date from last_day)
-)
+) */
 
 select
     *
 from
-    filtered
+    joined
